@@ -54,7 +54,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/auth-service:${{ steps.pkg_version.outputs.VERSION }}
-#          tags: booora/admin-service:4.0.0
           secrets: |
             GH_TOKEN=${{ secrets.GH_TOKEN }}
 
