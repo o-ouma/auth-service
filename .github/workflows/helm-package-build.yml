@@ -25,9 +25,15 @@ on:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.pkg_version.outputs.VERSION }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Get package version
+        id: pkg_version
+        run: echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -45,8 +51,10 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/auth-service:4.0.0
+          tags: ${{ secrets.DOCKER_USERNAME }}/auth-service:${{ steps.pkg_version.outputs.VERSION }}
+#          tags: booora/admin-service:4.0.0
           secrets: |
             GH_TOKEN=${{ secrets.GH_TOKEN }}
 

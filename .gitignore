@@ -133,6 +133,7 @@ dist
 build
 
 # Ignore all workflow files except specific ones
+.github/workflows/dockerhub-image-build.yml
 # .github/workflows/*
 # !.github/workflows/helm-package-build.yml
 # !.github/workflows/helm-package-deploy.yml
