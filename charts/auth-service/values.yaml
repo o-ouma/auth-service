@@ -16,7 +16,7 @@ image:
 sidecar:
   name: auth-sidecar-rel-4-0-0
   image:
-    repository: tazama-lf/sidecar
+    repository: booora/auth-service
     tag: "4.0.0"
     pullPolicy: Always
   port: 5000
