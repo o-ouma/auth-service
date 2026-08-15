@@ -55,7 +55,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/auth-service:${{ steps.pkg_version.outputs.VERSION }}
           secrets: |
-            GH_TOKEN=${{ secrets.GH_TOKEN }}
+            GH_TOKEN=${{ secrets.GH_TOKEN_LIB }}
 
   package_and_push_chart:
     needs: build-and-push-image

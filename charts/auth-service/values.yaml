@@ -14,9 +14,9 @@ image:
   tag: "4.0.0"
 
 sidecar:
-  name: auth-sidecar-rel-4-0-0
+  name: auth-event-sidecar
   image:
-    repository: booora/auth-service
+    repository: booora/event-sidecar
     tag: "4.0.0"
     pullPolicy: Always
   port: 5000
@@ -74,16 +74,16 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-pesalink-ke"
+    cert-manager.io/cluster-issuer: "letsencrypt-issuer"
   hosts:
-    - host: auth-service.approval.pesalink.ke
+    - host: auth-service.approval.test.lf
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
     - secretName: auth-service-tls
       hosts:
-        - auth-service.approval.pesalink.ke
+        - auth-service.approval.test.lf
 
   #  - secretName: chart-example-tls
   #    hosts:
